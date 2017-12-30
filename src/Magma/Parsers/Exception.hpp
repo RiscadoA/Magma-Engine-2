@@ -5,12 +5,12 @@
 namespace Magma
 {
 	/// <summary>
-	///		Thrown when a key is not found
+	///		Thrown when an element is not found
 	/// </summary>
-	class KeyNotFoundException : public Exception
+	class ElementNotFoundException : public Exception
 	{
 	public:
-		inline KeyNotFoundException(const char* msg) : Exception(msg) {}
+		inline ElementNotFoundException(const char* msg) : Exception(msg) {}
 	};
 
 	/// <summary>

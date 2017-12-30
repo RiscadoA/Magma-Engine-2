@@ -7,7 +7,7 @@ const Magma::INIDocument::Entry& Magma::INIDocument::GetEntry(const std::string&
 	for (auto& entry : m_data)
 		if (entry.region == region && entry.key == key)
 			return entry;
-	throw KeyNotFoundException(("Couldn't find the entry in this INI document with the key \"" + key + "\"").c_str());
+	throw ElementNotFoundException(("Couldn't find the entry in this INI document with the key \"" + key + "\"").c_str());
 }
 
 void Magma::INIDocument::SetEntry(Entry entry)
@@ -29,7 +29,7 @@ void Magma::INIDocument::RemoveEntry(const std::string & region, const std::stri
 			m_data.erase(it);
 			return;
 		}
-	throw KeyNotFoundException(("Couldn't find the entry in this INI document with the key \"" + key + "\"").c_str());
+	throw ElementNotFoundException(("Couldn't find the entry in this INI document with the key \"" + key + "\"").c_str());
 }
 
 const std::deque<Magma::INIDocument::Entry>& Magma::INIDocument::GetEntries() const
