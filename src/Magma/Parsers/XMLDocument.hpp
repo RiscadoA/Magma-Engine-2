@@ -8,7 +8,7 @@
 #include <memory>
 
 #include "..\Serializable.hpp"
-#include "Exception.hpp"
+#include "ParserException.hpp"
 
 namespace Magma
 {

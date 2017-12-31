@@ -2,9 +2,10 @@
 
 #include <string>
 #include <deque>
+#include <set>
 
 #include "..\Serializable.hpp"
-#include "Exception.hpp"
+#include "ParserException.hpp"
 
 namespace Magma
 {
@@ -15,14 +16,14 @@ namespace Magma
 	{
 	public:
 		static const size_t MajorVersion = 1;
-		static const size_t MinorVersion = 1;
+		static const size_t MinorVersion = 2;
 
 		/// <summary>
 		///		Contains info about an entry in a INI document
 		/// </summary>
 		struct Entry
 		{
-			std::string region;
+			std::string section;
 			std::string key;
 			std::string value;
 		};
@@ -31,7 +32,7 @@ namespace Magma
 		///		Returns the entry with the key.
 		///		Throws KeyNotFoundException when no entry is found with the key sent.
 		/// </summary>
-		const INIDocument::Entry& GetEntry(const std::string& region, const std::string& key) const;
+		const INIDocument::Entry& GetEntry(const std::string& section, const std::string& key) const;
 
 		/// <summary>
 		///		Adds or replaces an entry in this document.
@@ -39,9 +40,9 @@ namespace Magma
 		void SetEntry(Entry entry);
 
 		/// <summary>
-		///		Removes an entry from this document, using its key and region.
+		///		Removes an entry from this document, using its key and section.
 		/// </summary>
-		void RemoveEntry(const std::string& region, const std::string& key);
+		void RemoveEntry(const std::string& section, const std::string& key);
 
 		/// <summary>
 		///		Gets all entries in this document.
@@ -49,15 +50,15 @@ namespace Magma
 		const std::deque<Entry>& GetEntries() const;
 
 		/// <summary>
-		///		Gets all entries in a region.
+		///		Gets all entries in a section.
 		/// </summary>
-		/// <param name="region">Region to get entries from</param>
-		std::deque<Entry> GetEntries(const std::string& region) const;
+		/// <param name="section">Section to get entries from</param>
+		std::deque<Entry> GetEntries(const std::string& section) const;
 
 		/// <summary>
-		///		Gets all regions in this document.
+		///		Gets all sections in this document.
 		/// </summary>
-		std::deque<std::string> GetRegions() const;
+		std::set<std::string> GetSections() const;
 
 		/// <summary>
 		///		Clears this document.

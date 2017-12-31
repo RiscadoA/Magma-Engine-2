@@ -1,3 +1,4 @@
 # Ignore build folder
 build/
 .vs/
+.vscode/

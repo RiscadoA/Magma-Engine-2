@@ -4,11 +4,10 @@
 
 namespace Magma
 {
-	class Locator
-	{
-	public:
+	class Settings;
 
-	private:
-		
+	struct Locator
+	{
+		std::shared_ptr<Settings> settings;
 	};
 }

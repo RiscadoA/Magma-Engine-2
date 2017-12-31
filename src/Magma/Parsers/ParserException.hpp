@@ -12,13 +12,4 @@ namespace Magma
 	public:
 		inline ElementNotFoundException(const char* msg) : Exception(msg) {}
 	};
-
-	/// <summary>
-	///		Thrown when parsing fails
-	/// </summary>
-	class ParsingException : public Exception
-	{
-	public:
-		inline ParsingException(const char* msg) : Exception(msg) {}
-	};
 }

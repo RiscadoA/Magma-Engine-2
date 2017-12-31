@@ -98,7 +98,7 @@ void Magma::CSVDocument::Deserialize(std::istream & stream)
 				if (function == "end")
 					break;
 				else
-					throw ParsingException(("Failed to parse MCSV document, unknown special function \"?" + function + "\"").c_str());
+					throw FailedToDeserializeException(("Failed to parse MCSV document, unknown special function \"?" + function + "\"").c_str());
 			}
 			else if (inQuotes == false && character == ',')
 			{

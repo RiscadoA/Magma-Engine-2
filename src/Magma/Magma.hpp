@@ -2,5 +2,5 @@
 
 #include "Locator.hpp";
 
-extern void Load(Magma::Locator& locator);
-extern void Unload(Magma::Locator& locator);
+extern void Load(const Magma::Locator& locator);
+extern void Unload(const Magma::Locator& locator);
