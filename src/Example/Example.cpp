@@ -1,27 +1,21 @@
 #include <iostream>
-#include <fstream>
 
-#include <Magma\Magma.hpp>
-#include <Magma\Globals.hpp>
+#include <Magma/Magma.hpp>
 
-#include <Magma\Parsers\String.hpp>
+#include <Magma/Parsing/CSVDocument.hpp>
+#include <Magma/Parsing/INIDocument.hpp>
+#include <Magma/Environment.hpp>
+#include <Magma/Memory/StackAllocator.hpp>
+#include <Magma/Memory/LinearAllocator.hpp>
 
 using namespace Magma;
 
 void Load(const Locator& locator)
 {
-	std::cout << "Load" << std::endl;
-
-	// Print globals
-	{
-		auto globals = Globals::Get();
-		for (auto& g : globals)
-			std::cout << g.first << " = " << g.second << std::endl;
-	}
+	
 }
 
 void Unload(const Locator& locator)
 {
-	std::cout << "Unload" << std::endl;
-	std::cin.get();
+	std::wcin.get();
 }

@@ -1,8 +1,9 @@
 #pragma once
 
-#include <fstream>
-
 #include "Exception.hpp"
+
+#include <fstream>
+#include <string>
 
 namespace Magma
 {
@@ -36,10 +37,10 @@ namespace Magma
 		/// <exception cref="std::ifstream::failure">Thrown when file fails to open</exception>
 		/// <exception cref="FailedToDeserializeException">Thrown when object fails to deserialize</exception>
 		/// <param name="path">File path</param>
-		inline void ReadFromFile(const std::string& path)
+		inline void ReadFromFile(const std::wstring& path)
 		{
-			std::ifstream ifs;
-			ifs.exceptions(std::ifstream::failbit | std::ifstream::badbit);
+			std::wifstream ifs;
+			ifs.exceptions(std::wifstream::failbit | std::wifstream::badbit);
 			ifs.open(path);
 			this->Deserialize(ifs);
 		}
@@ -50,28 +51,28 @@ namespace Magma
 		/// <exception cref="std::ofstream::failure">Thrown when file fails to open</exception>
 		/// <exception cref="FailedToSerializeException">Thrown when object fails to serialize</exception>
 		/// <param name="path">File path</param>
-		inline void WriteToFile(const std::string& path)
+		inline void WriteToFile(const std::wstring& path)
 		{
-			std::ofstream ofs;
-			ofs.exceptions(std::ifstream::failbit | std::ifstream::badbit);
+			std::wofstream ofs;
+			ofs.exceptions(std::wofstream::failbit | std::wofstream::badbit);
 			ofs.open(path);
 			this->Serialize(ofs);
 		}
 
-		friend inline std::ostream& operator<<(std::ostream& stream, const Serializable& serializable)
+	private:
+		friend inline std::wostream& operator<<(std::wostream& stream, const Serializable& serializable)
 		{
 			serializable.Serialize(stream);
 			return stream;
-		};
+		}
 
-		friend inline std::istream& operator>>(std::istream& stream, Serializable& serializable)
+		friend inline std::wistream& operator>>(std::wistream& stream, Serializable& serializable)
 		{
 			serializable.Deserialize(stream);
 			return stream;
-		};
+		}
 
-	private:
-		virtual void Serialize(std::ostream& stream) const = 0;
-		virtual void Deserialize(std::istream& stream) = 0;
+		virtual void Serialize(std::wostream& stream) const = 0;
+		virtual void Deserialize(std::wistream& stream) = 0;
 	};
 }

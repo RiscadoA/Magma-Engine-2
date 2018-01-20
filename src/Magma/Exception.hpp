@@ -23,4 +23,6 @@ namespace Magma
 	private:
 		char* m_msg;
 	};
+
+	class OutOfBoundsException : public Exception { public: using Exception::Exception; };
 }

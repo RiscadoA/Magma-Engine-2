@@ -13,4 +13,6 @@ set(VERSION_MAJOR 0)
 set(VERSION_MINOR 1)
 set(VERSION_PATCH 0)
 
+add_subdirectory(external/glew)
+add_subdirectory(external/glfw)
 add_subdirectory(src/)
